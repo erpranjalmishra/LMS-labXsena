@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <a Color="Black" class="logo">labXsena Library</a>
+            <ul>
+                <li><a href="http://labxsena.com">Home</a></li>
+                <li><a href="http://labxsena.com/chat.html">Ai Help</a></li>
+                <li><a href="https://labXsena.com/login.html">login</a></li>
+                <li><button id="cartButtonHeader">View Borrowings <span id="cartCountHeader"></button></li>
+            
+            </ul>
+        </nav>
+    </header>
+    <div class="filters">
+        <form id="filterForm">
+            <label for="genreSelect">Genre:</label>
+            <select id="genreSelect">
+                <option value="all">All</option>
+                <option value="fiction">Fiction</option>
+                <option value="non-fiction">Non-Fiction</option>
+                <option value="fantasy">Fantasy</option>
+                <option value="mystery">Mystery</option>
+            </select>
+    
+            <label for="authorSelect">Author:</label>
+            <select id="authorSelect">
+                <option value="all">All</option>
+                <option value="author1">Author 1</option>
+                <option value="author2">Author 2</option>
+            </select>
+    
+            <button type="submit">Apply Filters</button>
+        </form>
+    </div>
+    <div class="container">
+        <h1>Books</h1>
+        <div class="search">
+            <input type="text" id="searchInput" placeholder="Search for books...">
+            <button id="searchButton">Search</button>
+        </div>
+        <div id="books" class="books"></div>
+        <button id="cartButton">View Borrowings (<span id="cartCount">0</span>)</button>
+    </div>
+    <div id="cartPopup" class="cart-popup">
+        <div class="cart-popup-content">
+            <span id="closePopup" class="close">&times;</span>
+            <h2>Your Borrowings</h2>
+            <div id="cart" class="cart"></div>
+            <h3><li><button id="cartButtonHeader">Check Out <span id="cartCountHeader"></button></li></h3>
+        </div>
+    </div>
+    <div id="chatPopup" class="chat-popup" type="hidden">
+        <div class="chat-popup-content">
+            <span id="closeChatPopup" class="close">&times;</span>
+            <h2>Chat with Gemini</h2>
+            <div id="chatBox" class="chat-box"></div>
+            <input type="text" id="chatInput" placeholder="Type your message...">
+            <button id="sendChatButton">Send</button>
+        </div>
+    </div>
+    <button id="helpButton" class="floating-button">Chat with Gemini</button>
+    <script type="module">
+        import { GoogleGenerativeAI } from "@google/generative-ai";
+        const API_KEY = "AIzaSyCNjlQYV3tOcIc_ijARSin2QQXde6iAakc";
+        const genAI = new GoogleGenerativeAI(API_KEY);
+        const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash"});
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>

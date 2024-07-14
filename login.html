@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login & Register</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden; 
+        }
+        #video-background {
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            min-width: 100%;
+            min-height: 100%;
+            z-index: -1;
+        }
+        .form-container {
+            background-color: rgba(255, 255, 255, 0.8); 
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            max-width: 100%;
+            text-align: center;
+            z-index: 1; 
+        }
+        .form-container input,
+        .form-container select {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        .form-container button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .form-container button:hover {
+            background-color: #45a049;
+        }
+        .switch-btn {
+            margin-top: 10px;
+            text-decoration: underline;
+            color: #007bff;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <video id="video-background" autoplay muted loop>
+        <source src="labXsena loves Odoo.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <div class="form-container" id="loginForm">
+        <h2>Login and Register</h2>
+        <form>
+            <input type="email" placeholder="Email" required>
+            <input type="password" placeholder="Password" required>
+            <select name="userType" required>
+                <option value="">Select User Type</option>
+                <option value="user">user</option>
+                <option value="librarian">librarian</option>
+                <option value="admin">admin</option>
+            </select>
+            <button type="submit">Login</button>
+        </form>
+        <p class="switch-btn" onclick="toggleForm('registerForm')">Switch to Register</p>
+    </div>
+
+    <div class="form-container" id="registerForm" style="display:none;">
+        <h2>Register</h2>
+        <form>
+            <input type="text" placeholder="Username" required>
+            <input type="email" placeholder="Email" required>
+            <input type="password" placeholder="Password" required>
+            <select name="userType" required>
+                <option value="">Select User Type</option>
+                <option value="user">user</option>
+                <option value="librarian">librarian</option>
+                <option value="admin">admin</option>
+            </select>
+            <button type="submit">Register</button>
+        </form>
+        <p class="switch-btn" onclick="toggleForm('loginForm')">Switch to Login</p>
+    </div>
+    <script src="https://www.google.com/recaptcha/api.js?render=reCAPTCHA_site_key"></script>
+    <script>
+        function toggleForm(formId) {
+            document.getElementById('loginForm').style.display = 'none';
+            document.getElementById('registerForm').style.display = 'none';
+            document.getElementById(formId).style.display = 'block';
+        }
+    </script>
+</body>
+</html>
